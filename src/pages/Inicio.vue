@@ -1,6 +1,7 @@
 <template>
     <div class="relative flex flex-col items-center justify-center w-full h-full bg-gray-900 select-none">
-        <div class="flex flex-col w-full max-w-lg text-white border border-white rounded-lg">
+        <Cuadricula :tam="tam" :celdas_x="celdas_x" :celdas_y="celdas_y" />
+        <div class="flex flex-col w-full max-w-lg mt-8 text-white border border-white rounded-lg">
             <div class="p-4 border-b border-gray-600">
                 <span>Seleccione la configuración deseada:</span>
             </div>
@@ -12,12 +13,12 @@
                 <div class="flex w-3/5 p-4">
                     <div class="flex flex-col w-1/2">
                         <span>Celdas en X:</span>
-                        <input class="w-full h-10 text-center bg-gray-900 border border-white rounded" type="number" v-model="celdas_x">
+                        <input class="w-full h-10 text-center bg-gray-900 border border-white rounded" type="number" min="4" v-model="celdas_x">
                     </div>
                     <div class="w-4"></div>
                     <div class="flex flex-col w-1/2">
                         <span>Celdas en Y:</span>
-                        <input class="w-full h-10 text-center bg-gray-900 border border-white rounded" type="number" v-model="celdas_y">
+                        <input class="w-full h-10 text-center bg-gray-900 border border-white rounded" type="number" min="4" v-model="celdas_y">
                     </div>
                 </div>
             </div>
@@ -27,8 +28,9 @@
 </template>
 
 <script>
+    import Cuadricula from '../components/Cuadricula.vue'
+
     export default {
-        name: 'Inicio',
         props: [
             'iniciar'
         ],
@@ -41,10 +43,6 @@
         },
         methods: {
             setConfig() {
-                localStorage.setItem('tam',         this.tam)
-                localStorage.setItem('celdas_x',    this.celdas_x)
-                localStorage.setItem('celdas_y',    this.celdas_y)
-
                 let validar = (
                     !isNaN(this.tam)                &&
                     !isNaN(this.celdas_x)           &&
@@ -57,8 +55,17 @@
                     this.celdas_y > 3
                 )
 
+                if (validar) {
+                    localStorage.setItem('tam',         this.tam)
+                    localStorage.setItem('celdas_x',    this.celdas_x)
+                    localStorage.setItem('celdas_y',    this.celdas_y)
+                }
+
                 this.iniciar(validar)
             }
         },
+        components: {
+            Cuadricula,
+        }
     }
 </script>
