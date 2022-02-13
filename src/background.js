@@ -15,8 +15,8 @@ async function createWindow() {
   let win = new BrowserWindow({
     width: 900,
     height: 600,
-    transparent:true,
-    frame: false,
+    transparent: true,
+    frame: true,
     webPreferences: {
       
       // Use pluginOptions.nodeIntegration, leave this alone
@@ -27,6 +27,7 @@ async function createWindow() {
       contextIsolation: true
     }
   })
+  win.setMenuBarVisibility(false)
 
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode
