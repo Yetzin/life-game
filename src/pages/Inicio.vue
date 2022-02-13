@@ -29,18 +29,35 @@
 <script>
     export default {
         name: 'Inicio',
+        props: [
+            'iniciar'
+        ],
         data() {
             return {
-                tam: localStorage.getItem('tam')? parseInt(localStorage.getItem('tam')) : 4,
-                celdas_x: localStorage.getItem('celdas_x')? parseInt(localStorage.getItem('celdas_x')) : 20,
-                celdas_y: localStorage.getItem('celdas_y')? parseInt(localStorage.getItem('celdas_y')) : 20,
+                tam:        localStorage.getItem('tam')?        parseInt(localStorage.getItem('tam'))       : 4,
+                celdas_x:   localStorage.getItem('celdas_x')?   parseInt(localStorage.getItem('celdas_x'))  : 20,
+                celdas_y:   localStorage.getItem('celdas_y')?   parseInt(localStorage.getItem('celdas_y'))  : 20,
             }
         },
         methods: {
             setConfig() {
-                localStorage.setItem('tam', this.tam)
-                localStorage.setItem('celdas_x', this.tam)
-                localStorage.setItem('celdas_y', this.tam)
+                localStorage.setItem('tam',         this.tam)
+                localStorage.setItem('celdas_x',    this.celdas_x)
+                localStorage.setItem('celdas_y',    this.celdas_y)
+
+                let validar = (
+                    !isNaN(this.tam)                &&
+                    !isNaN(this.celdas_x)           &&
+                    !isNaN(this.celdas_y)           &&
+                    Number.isInteger(this.tam)      &&
+                    Number.isInteger(this.celdas_x) &&
+                    Number.isInteger(this.celdas_y) &&
+                    this.tam > 0                    &&
+                    this.celdas_x > 3               &&
+                    this.celdas_y > 3
+                )
+
+                this.iniciar(validar)
             }
         },
     }
