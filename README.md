@@ -1,16 +1,16 @@
 # life-game
 
-## Project setup
+## Instalación del proyecto
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Compilar y ejecutar hot-reloads para el entorno de desarrollo
 ```
 npm run dev
 ```
 
-### Compiles and minifies for production
+### Compilar y minificar CSS y JavaScript para producción
 ```
 npm run prod
 ```
