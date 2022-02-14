@@ -9,9 +9,18 @@ module.exports = {
                 //   circle: '#e4f5da',
                 //   ok: '#20e0e0',
                 // },
+                black: {
+                    'mate':         '#181818',
+                    'mate-claro':   '#2f2f2f',
+                },
             },
             spacing: {
-                window: 'calc(100% - 2rem)'
+                window: 'calc(100% - 2rem)',
+                todo:   'calc(100vw)',
+                custom: 'calc(100vh - 20rem)',
+            },
+            borderWidth: {
+                '0.5': '0.5px'
             },
             borderRadius: {
                 full: '50%',

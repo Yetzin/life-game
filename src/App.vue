@@ -2,7 +2,6 @@
     <section class="relative w-full h-screen">
         <Inicio v-if="!iniciado" :iniciar="iniciar" />
         <div v-else class="w-full h-full text-white select-none">Comienzo</div>
-        <!-- <Cuadricula v-else /> -->
     </section>
 </template>
 
@@ -22,7 +21,6 @@
         },
         components: {
             Inicio,
-            // Cuadricula,
         }
     }
 </script>
